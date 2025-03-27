@@ -3,6 +3,7 @@ import cors from 'cors'
 import { Mongo } from './database/mongo.js'
 import { config } from 'dotenv'/* O .env serve para proteger as informções, como senha do usuaria e adm, que não fica visivel a imformação do bando de dados. */
 import authRouter from './auth/auth.js'
+import usersRouter from './routes/users.js'
 
 config() /*Coloca o esse função para chamar o dotenv */
 
@@ -27,7 +28,9 @@ async function main() {
         })
     })
 
+    // Routes
     app.use('/auth', authRouter)
+    app.use('/users', usersRouter)
 
     app.listen(port, () => {
         console.log(`Serve running on: https://${hostname}:${port}`)
@@ -38,3 +41,5 @@ async function main() {
 }
 
 main()
+
+// continuar com a aula no 20:04
