@@ -42,4 +42,4 @@ async function main() {
 
 main()
 
-// continuar com a aula no 20:04
+// Creio que fiz algo de errado na parte de autenticação do usuario, pos nesta parte que esta dando erro

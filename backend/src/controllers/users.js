@@ -3,17 +3,31 @@ import { ok, serveError } from '../helpers/httpResponse.js'
 
 export default class UserControllers {
     constructor() {
-        this.UsersDataAccess = new UsersDataAccess()
+        this.dataAccess = new UsersDataAccess()
     }
 
     async getUsers() {
         try {
-            const users = await this.UsersDataAccess.getUsers();
+            const users = await this.dataAccess.getUsers()
 
-            return ok(users);
+
+            return ok(users)
         } catch (error) {
-            return serveError(error);
+            return serveError(error)
         }
     }
 
+    async deleteUsers(userId) {
+        try {
+            const result = await this.dataAccess.deleteUser()
+
+
+            return ok(result)
+        } catch (error) {
+            return serveError(error)
+        }
+    }
+
+
 }
+
