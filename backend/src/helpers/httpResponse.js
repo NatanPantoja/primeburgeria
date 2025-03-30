@@ -10,7 +10,7 @@ export const notFound = () => {
     return {
         success: false,
         statusCode: 404,
-        body: 'Not found'
+        body: 'Não encontrado'
     }
 }
 

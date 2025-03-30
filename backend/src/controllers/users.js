@@ -19,7 +19,19 @@ export default class UserControllers {
 
     async deleteUsers(userId) {
         try {
-            const result = await this.dataAccess.deleteUser()
+            const result = await this.dataAccess.deleteUser(userId)
+
+
+            return ok(result)
+        } catch (error) {
+            return serveError(error)
+        }
+    }
+
+    async updateUser(userId, userData) {
+        try {
+            const result = await this.dataAccess.updateUser(userId, userData)
+
 
 
             return ok(result)
