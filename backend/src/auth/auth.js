@@ -57,6 +57,7 @@ authRouter.post('/signup', async (req, res) => {
     }
 
     const salt = crypto.randomBytes(16)
+
     crypto.pbkdf2(req.body.password, salt, 310000, 16, 'sha256', async (err, hashedPassword) => {
         if (err) {
             return res.status(500).send({
@@ -113,11 +114,11 @@ authRouter.post('/login', (req, res) => {
         }
 
         if (!user) {
-            return res.status(500).send({
+            return res.status(400).send({
                 success: false,
-                statusCode: 500,
+                statusCode: 400,
                 body: {
-                    text: 'User not found',
+                    text: 'Senha incorreta ',
 
                 }
             })
@@ -129,7 +130,7 @@ authRouter.post('/login', (req, res) => {
             success: true,
             statusCode: 200,
             body: {
-                text: 'User logged in correctly',
+                text: 'Usuário logado',
                 user,
                 token
 
